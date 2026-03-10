@@ -72,7 +72,7 @@
                         @foreach(['SUV', 'Sedan', 'Hatchback', 'Coupe', 'Minivan', 'City Car', 'Truck', 'D-Cab'] as $type)
                             <button type="button" class="px-4 py-1.5 rounded-full border border-gray-200 text-xs font-medium hover:bg-black hover:text-white transition">
                                 {{ $type }}
-                            </button>
+                            </a>
                         @endforeach
                     </div>
                     
@@ -197,9 +197,9 @@
                                 <h3 class="font-bold text-xl text-gray-800">{{ $car->brand }} {{ $car->model }}</h3>
                                 <p class="text-blue-600 font-black mt-1">Rp {{ number_format($car->price / 1000000, 0) }}jt</p>
                             </div>
-                            <button class="bg-gray-100 hover:bg-black hover:text-white px-4 py-2 rounded-full text-xs font-bold transition">
+                            <a href="{{ route('cars.show', $car->id) }}" class="bg-gray-100 hover:bg-black hover:text-white px-4 py-2 rounded-full text-xs font-bold transition">
                                 View
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

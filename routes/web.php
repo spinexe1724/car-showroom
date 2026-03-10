@@ -1,21 +1,25 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ShowroomController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+
+// Custom Public Routes
 Route::get('/', [CarController::class, 'index'])->name('cars.index');
+Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
 
-// Halaman form upload (untuk Admin/Showroom)
 Route::get('/upload', function () {
-    return view('upload'); // Pastikan Anda sudah membuat resources/views/upload.blade.php
+    return view('upload');
 });
-
-// Proses upload file Excel
 Route::post('/upload', [CarController::class, 'upload'])->name('cars.import');
+
+Route::get('/upload-showroom', [ShowroomController::class, 'index'])->name('showrooms.upload');
+Route::post('/upload-showroom', [ShowroomController::class, 'upload'])->name('showrooms.import');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

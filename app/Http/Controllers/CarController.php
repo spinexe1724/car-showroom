@@ -15,6 +15,13 @@ class CarController extends Controller
         return view('cars.index', compact('cars'));
     }
 
+    
+    public function show($id)
+    {
+        $car = Car::findOrFail($id);
+        return view('cars.show', compact('car'));
+    }
+
     public function upload(Request $request)
     {
         $request->validate(['file' => 'required|mimes:xlsx,csv']);

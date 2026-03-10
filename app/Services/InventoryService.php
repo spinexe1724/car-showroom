@@ -41,7 +41,6 @@ class InventoryService
                         'brand'       => (string) $line['merk'],
                         'model'       => (string) $line['model'],
                         'price'       => (int) $line['harga'],
-                        'image_path'  => (string) $line['image_path'],
                         'is_active'   => true,
                         'updated_at'  => now(),
                         'created_at'  => now(),
