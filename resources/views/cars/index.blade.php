@@ -5,6 +5,8 @@
 @section('content')
 <div class="relative min-h-screen bg-white">
     
+
+    
     {{-- 1. HERO SECTION --}}
     <div class="relative h-[600px] w-full overflow-hidden">
         <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=2000" 
@@ -93,14 +95,17 @@
             </div>
             
             {{-- Navigation Arrows --}}
-            <div class="flex gap-3">
-                <button onclick="scrollSlider('type-slider', 'left')" class="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white transition shadow-sm bg-white">
-                    <span class="material-icons">chevron_left</span>
-                </button>
-                <button onclick="scrollSlider('type-slider', 'right')" class="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center hover:bg-black hover:text-white transition shadow-sm bg-white">
-                    <span class="material-icons">chevron_right</span>
-                </button>
-            </div>
+<div class="flex gap-3 relative z-30"> {{-- Tambahkan z-30 agar tidak tertutup elemen lain --}}
+    <button onclick="scrollSlider('type-slider', 'left')" 
+            class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white transition shadow-md bg-white text-gray-800">
+        <span class="material-icons text-2xl">chevron_left</span>
+    </button>
+    
+    <button onclick="scrollSlider('type-slider', 'right')" 
+            class="w-12 h-12 rounded-full border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white transition shadow-md bg-white text-gray-800">
+        <span class="material-icons text-2xl">chevron_right</span>
+    </button>
+</div>
         </div>
 
         {{-- Slider Container --}}
@@ -209,4 +214,31 @@
     {{-- Include Footer --}}
     @include('layouts.footer')
 </div>
+<script>
+    <script>
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            const logoText = document.getElementById('nav-logo-text');
+            const navLinks = nav.querySelectorAll('a:not(.bg-white)');
+
+            if (window.pageYOffset > 50) {
+                // Saat di-scroll ke bawah
+                nav.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm', 'py-4');
+                nav.classList.remove('py-6');
+                logoText.classList.replace('text-white', 'text-gray-900');
+                navLinks.forEach(link => {
+                    link.classList.replace('text-white', 'text-gray-700');
+                });
+            } else {
+                // Saat kembali ke atas (Hero)
+                nav.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm', 'py-4');
+                nav.classList.add('py-6');
+                logoText.classList.replace('text-gray-900', 'text-white');
+                navLinks.forEach(link => {
+                    link.classList.replace('text-gray-700', 'text-white');
+                });
+            }
+        };
+    </script>
+</script>
 @endsection
