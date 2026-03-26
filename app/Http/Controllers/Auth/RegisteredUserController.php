@@ -27,24 +27,32 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+  public function store(Request $request)
+{
+    $request->validate([
+        'clprnoktp' => ['required', 'string'],
+        'email' => ['required', 'string', 'email', 'unique:users'],
+        'password' => ['required', 'confirmed'],
+        'no_telepon' => ['required', 'string'],
+        
+    ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    // Cek di table showrooms
+    $showroom = \App\Models\Showroom::where('clprnoktp', $request->clprnoktp)->first();
 
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+    if (!$showroom) {
+        return back()->withErrors(['clprnoktp' => 'Nomor KTP tidak terdaftar!'])->withInput();
     }
+
+    // Buat User (Tanpa input nama manual)
+    $user = \App\Models\User::create([
+        'name' => $showroom->nmdealer, 
+        'clprnoktp' => $request->clprnoktp,
+        'email' => $request->email,
+        'no_telepon' => $request->no_telepon,
+        'password' => \Illuminate\Support\Facades\Hash::make($request->password),
+    ]);
+
+    return redirect()->route('login')->with('status', 'Registrasi berhasil, silakan login.');
+}
 }

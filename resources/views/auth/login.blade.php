@@ -62,7 +62,7 @@
 
                 <div class="mt-10 text-center pt-6 border-t border-white/20">
                     <p class="text-white/40 font-bold text-[10px] uppercase tracking-widest">
-                        New Partner? <a href="" class="text-red-500 hover:text-red-400 transition-colors ml-1">Register Now</a>
+                        New Partner? <a href="/register" class="text-red-500 hover:text-red-400 transition-colors ml-1">Register Now</a>
                     </p>
                 </div>
             </div>

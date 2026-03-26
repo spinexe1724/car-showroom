@@ -14,6 +14,21 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+
+    public function show()
+{
+    $user = auth()->user();
+    
+    // Opsional: Ambil detail tambahan dari tabel showroom berdasarkan clprnoktp
+    $showroom = \App\Models\Showroom::where('clprnoktp', $user->clprnoktp)->first();
+
+    return view('profile.show', compact('user', 'showroom'));
+}
+
+
+
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
