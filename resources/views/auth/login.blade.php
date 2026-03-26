@@ -27,7 +27,7 @@
 
             {{-- FORM LOGIN (Kanan) --}}
             {{-- List merah dihilangkan, border dibuat soft --}}
-            <div class="w-full max-w-[400px] bg-white/20 backdrop-blur-2xl p-10 rounded-[40px] shadow-2xl border border-white/10 mt-8 md:mt-0 relative overflow-hidden">
+            <div class="w-full max-w-[400px] bg-black/40 backdrop-blur-2xl p-10 rounded-[40px] shadow-2xl border border-white/20 mt-8 md:mt-0 relative overflow-hidden">
                 
                 <div class="mb-10 text-center md:text-left">
                     <div class="w-12 h-12 bg-red-700 rounded-2xl flex items-center justify-center shadow-lg mb-6 mx-auto md:mx-0">
@@ -41,13 +41,13 @@
                     @csrf
                     <div class="space-y-1">
                         <input type="email" name="email" required 
-                               class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-red-700 focus:bg-white outline-none transition-all font-bold text-white focus:text-slate-900 text-sm placeholder:text-white/40" 
+                               class="w-full bg-black/20 border border-white/20 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-red-700 focus:bg-white outline-none transition-all font-bold text-white focus:text-slate-900 text-sm placeholder:text-white/40" 
                                placeholder="Work Email">
                     </div>
                     
                     <div class="space-y-1">
                         <input type="password" name="password" required 
-                               class="w-full bg-white/10 border border-white/10 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-red-700 focus:bg-white outline-none transition-all font-bold text-white focus:text-slate-900 text-sm placeholder:text-white/40" 
+                               class="w-full bg-black/20 border border-white/20 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-red-700 focus:bg-white outline-none transition-all font-bold text-white focus:text-slate-900 text-sm placeholder:text-white/40" 
                                placeholder="Password">
                     </div>
                     
@@ -60,7 +60,7 @@
                     </div>
                 </form>
 
-                <div class="mt-10 text-center pt-6 border-t border-white/10">
+                <div class="mt-10 text-center pt-6 border-t border-white/20">
                     <p class="text-white/40 font-bold text-[10px] uppercase tracking-widest">
                         New Partner? <a href="" class="text-red-500 hover:text-red-400 transition-colors ml-1">Register Now</a>
                     </p>
